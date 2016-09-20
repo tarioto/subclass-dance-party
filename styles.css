@@ -3,7 +3,8 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url(assets/dodgeball-court.jpg);
+  background-size: 100% 100%;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -20,8 +21,24 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
+
 .dancer{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+.blinkyDancer{
+  width:100px;
+  height:100px; 
+  position: absolute;
+}
+.averageDancer{
+  width:100px;
+  height:100px; 
+  position: absolute;
+}
+.cobraDancer{
+  width:100px;
+  height:100px; 
+  position: absolute;
 }
