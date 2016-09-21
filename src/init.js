@@ -2,7 +2,7 @@ $(document).ready(function() {
   window.blinkyDancers = [];
   window.humanDancers = [];
 
-  $('.addDancerButton').on('click', function(event) {
+  $('.addDancerButton').on('click', function (event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -52,10 +52,10 @@ $(document).ready(function() {
   });
 
 
-  $('.throwDodgeballs').on('click', function () {
-    window.blinkyDancers.forEach(function(blinkyDancer) {
-      blinkyDancer.animate({left: (Math.random() * $('body').width()), top: (Math.random() * $('body').height())}, 400, function () {
-        window.humanDancers.forEach(function(humanDancer, averageIndex) {
+  $('.throwDodgeballs').on('click', () => {
+    window.blinkyDancers.forEach((blinkyDancer) => {
+      blinkyDancer.animate({left: (Math.random() * $('body').width()), top: (Math.random() * $('body').height())}, 400, () => {
+        window.humanDancers.forEach((humanDancer, averageIndex) => {
           var distance = Math.sqrt(Math.pow((blinkyDancer.position().top - humanDancer.position().top), 2) + Math.pow((blinkyDancer.position().left - humanDancer.position().left), 2));
           if (distance < 125) {
             humanDancer.fadeOut();
