@@ -1,7 +1,6 @@
 $(document).ready(function() {
   window.blinkyDancers = [];
-  window.averageDancers = [];
-  window.cobraDancers = [];
+  window.humanDancers = [];
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -44,9 +43,9 @@ $(document).ready(function() {
     $('body').append(dancer.$node);
 
     if (dancerMakerFunctionName === 'AverageDancer') {
-      window.averageDancers.push(dancer.$node);
+      window.humanDancers.push(dancer.$node);
     } else if (dancerMakerFunctionName === 'CobraDancer') {
-      window.cobraDancers.push(dancer.$node);
+      window.humanDancers.push(dancer.$node);
     } else if (dancerMakerFunctionName === 'BlinkyDancer') { 
       window.blinkyDancers.push(dancer.$node);
     }
@@ -54,27 +53,16 @@ $(document).ready(function() {
 
 
   $('.throwDodgeballs').on('click', function () {
-
-    $('.blinkyDancer:even').animate({left: (Math.random() * $('body').width() / 2)}, 400, function () {
-      window.blinkyDancers.forEach(function(element, index) {
-        window.averageDancers.forEach(function(averageElement, averageIndex) {
-          var distance = Math.sqrt(Math.pow((element.position().top - averageElement.position().top), 2) + Math.pow((element.position().left - averageElement.position().left), 2));
+    window.blinkyDancers.forEach(function(blinkyDancer) {
+      blinkyDancer.animate({left: (Math.random() * $('body').width()), top: (Math.random() * $('body').height())}, 400, function () {
+        window.humanDancers.forEach(function(humanDancer, averageIndex) {
+          var distance = Math.sqrt(Math.pow((blinkyDancer.position().top - humanDancer.position().top), 2) + Math.pow((blinkyDancer.position().left - humanDancer.position().left), 2));
           if (distance < 125) {
-            averageElement.remove();
+            humanDancer.fadeOut();
+
           }
         });
       });
     } );
-    $('.blinkyDancer:odd').animate({left: (($('body').width() / 2 * Math.random()) + ($('body').width() / 2))}, 400, function () {
-      window.blinkyDancers.forEach(function(element, index) {
-        window.cobraDancers.forEach(function(cobraElement, averageIndex) {
-          var distance = Math.sqrt(Math.pow((element.position().top - cobraElement.position().top), 2) + Math.pow((element.position().left - cobraElement.position().left), 2));
-          if (distance < 125) {
-            cobraElement.remove();
-          }
-        });
-      });
-    } );
-
   });
 });
